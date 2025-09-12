@@ -1,7 +1,8 @@
 // Utility helpers for working with ISO date strings
 export function formatDate(date: string | Date, locale = "en-GB"): string {
   const d = typeof date === "string" ? new Date(date) : date;
-  return d.toLocaleDateString(locale, { year: "numeric", month: "short", day: "numeric" });
+  return d.toLocaleDateString(locale, { year: "numeric", month: "short", day: "numeric",  hour: "2-digit",
+    minute: "2-digit", hour12: true});
 }
 
 export function daysUntil(date: string | Date): number {

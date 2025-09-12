@@ -18,20 +18,37 @@ export function Button({ title, onPress, disabled }: Props) {
   );
 }
 
+// const styles = StyleSheet.create({
+//   button: {
+//     backgroundColor: '#0066cc',
+//     paddingVertical: 12,
+//     borderRadius: 6,
+//     alignItems: 'center',
+//     marginVertical: 8,
+//   },
+//   disabled: {
+//     backgroundColor: '#ccc',
+//   },
+//   text: {
+//     color: '#fff',
+//     fontWeight: '600',
+//     fontSize: 16,
+//   },
+// });
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#0066cc',
-    paddingVertical: 12,
-    borderRadius: 6,
+    backgroundColor: '#007AFF', // iOS blue
+    paddingVertical: 14,
+    borderRadius: 30, // pill shape
     alignItems: 'center',
-    marginVertical: 8,
+    marginVertical: 12,
   },
-  disabled: {
+   disabled: {
     backgroundColor: '#ccc',
   },
   text: {
     color: '#fff',
     fontWeight: '600',
-    fontSize: 16,
+    fontSize: 18,
   },
 });

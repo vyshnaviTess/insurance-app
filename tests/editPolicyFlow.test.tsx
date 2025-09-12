@@ -1,0 +1,32 @@
+import { render, fireEvent } from "@testing-library/react-native";
+import EditPolicy from "../app/policy/[id]/editPolicy";
+import { Provider } from "react-redux";
+import { store } from "../src/store";
+import { policiesActions } from "../src/store/policiesSlice";
+import { InsurancePolicy } from "../src/domain/entities/insurancePolicy";
+
+test("edits a policy provider", () => {
+  const policy: InsurancePolicy = {
+    id: "p1",
+    type: "car",
+    provider: "Old",
+    policyNumber: "123",
+    startDate: "2024-01-01",
+    endDate: "2025-01-01",
+    premium: 100,
+    coverage: {},
+    documents: [],
+    reminders: [],
+  };
+  store.dispatch(policiesActions.upsertPolicy(policy));
+
+  const { getByText, getByLabelText } = render(
+    <Provider store={store}><EditPolicy/></Provider>
+  );
+
+  fireEvent.changeText(getByLabelText("Provider"), "New Provider");
+  fireEvent.press(getByText("Save"));
+
+  const state: any = store.getState();
+  expect(state.policies.entities["p1"].provider).toBe("New Provider");
+});

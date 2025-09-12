@@ -1,9 +1,11 @@
+import { ReactNode } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 type Props = {
   title: string;
   subtitle?: string;
   onPress?: () => void;
+  children?: ReactNode;
 };
 
 export function Card({ title, subtitle, onPress }: Props) {

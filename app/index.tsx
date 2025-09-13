@@ -1,15 +1,22 @@
-import { FlatList } from "react-native";
-import { Link } from "expo-router";
-import { useSelector } from "react-redux";
-import { policiesSelectors } from "@/store/policiesSlice";
+import { FlatList, Pressable } from "react-native";
+import { Link, useRouter } from "expo-router";
+import { useSelector, useDispatch } from "react-redux";
+import { policiesSelectors, policiesActions } from "@/store/policiesSlice";
 import { Screen } from "@/ui/components/Screen";
 import { Card } from "@/ui/components/Card";
 import { Button } from "@/ui/components/Button";
 import { EmptyState } from "@/ui/components/EmptyState";
 import { formatDate } from "@/utils/dates";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function Home() {
   const policies = useSelector(policiesSelectors.selectAll);
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const handleDelete = (id: string) => {
+    dispatch(policiesActions.removePolicy(id));
+  };
 
   return (
     <Screen title="My Policies">
@@ -24,12 +31,16 @@ export default function Home() {
           />
         }
         renderItem={({ item }) => (
-          <Link key={item.id} href={`/policy/${item.id}`} asChild>
-            <Card
-              title={`${item.type.toUpperCase()} • ${item.provider}`}
-               subtitle={`Ends ${formatDate(item.endDate)}`}
-            />
-          </Link>
+          <Card
+            title={`${item.type.toUpperCase()} • ${item.provider}`}
+            subtitle={`Ends ${formatDate(item.endDate)}`}
+            onPress={() => router.push(`/policy/${item.id}`)} // ✅ open details
+            trailing={
+              <Pressable onPress={() => handleDelete(item.id)}>
+                <Ionicons name="trash-outline" size={20} color="red" />
+              </Pressable>
+            }
+          />
         )}
         ListFooterComponent={
           <Link href="/policy/new" asChild>

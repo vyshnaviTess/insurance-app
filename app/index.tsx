@@ -1,4 +1,4 @@
-import { FlatList, Pressable } from "react-native";
+import { Alert, FlatList, Pressable } from "react-native";
 import { Link, useRouter } from "expo-router";
 import { useSelector, useDispatch } from "react-redux";
 import { policiesSelectors, policiesActions } from "@/store/policiesSlice";
@@ -14,8 +14,25 @@ export default function Home() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const handleDelete = (id: string) => {
-    dispatch(policiesActions.removePolicy(id));
+ const confirmDelete = (id: string) => {
+    Alert.alert(
+      "Delete Policy",
+      "Are you sure you want to delete this policy?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Yes",
+          style: "destructive",
+          onPress: () => {
+            dispatch(policiesActions.removePolicy(id));
+          },
+        },
+      ],
+      { cancelable: true }
+    );
   };
 
   return (
@@ -36,7 +53,7 @@ export default function Home() {
             subtitle={`Ends ${formatDate(item.endDate)}`}
             onPress={() => router.push(`/policy/${item.id}`)} // ✅ open details
             trailing={
-              <Pressable onPress={() => handleDelete(item.id)}>
+              <Pressable onPress={() => confirmDelete(item.id)}>
                 <Ionicons name="trash-outline" size={20} color="red" />
               </Pressable>
             }

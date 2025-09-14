@@ -8,6 +8,7 @@ import { Button } from "@/ui/components/Button";
 import { EmptyState } from "@/ui/components/EmptyState";
 import { formatDate } from "@/utils/dates";
 import { Ionicons } from "@expo/vector-icons";
+import { deletePolicy } from "@/domain/usecases/deletePolicy";
 
 export default function Home() {
   const policies = useSelector(policiesSelectors.selectAll);
@@ -27,7 +28,7 @@ export default function Home() {
           text: "Yes",
           style: "destructive",
           onPress: () => {
-            dispatch(policiesActions.removePolicy(id));
+            deletePolicy(id)(dispatch);
           },
         },
       ],

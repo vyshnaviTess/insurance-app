@@ -4,13 +4,31 @@ import * as FileSystem from "expo-file-system/legacy";
 import * as WebBrowser from "expo-web-browser";
 import { documentsSelectors } from "@/store/documentSlice";
 import { Screen } from "@/ui/components/Screen";
-import { Text, View, Alert, Image, ScrollView } from "react-native";
+import { Text, Alert, Image, ScrollView } from "react-native";
 import { Button } from "@/ui/components/Button";
 import { ReactNode, useEffect, useState } from "react";
 
 export default function DocumentViewer() {
   const { documentId } = useLocalSearchParams<{ documentId: string }>();
   const doc = useSelector((s: any) => documentsSelectors.selectById(s, documentId!));
+
+  const [textContent, setTextContent] = useState<string>("");
+
+  useEffect(() => {
+    if (doc) {
+      const ext = doc.name.split(".").pop()?.toLowerCase();
+      if (ext === "txt") {
+        (async () => {
+          try {
+            const data = await FileSystem.readAsStringAsync(doc.uri);
+            setTextContent(data);
+          } catch {
+            setTextContent("Unable to read text file");
+          }
+        })();
+      }
+    }
+  }, [doc]);
 
   async function handleDownload() {
     if (!doc) return;
@@ -33,20 +51,13 @@ export default function DocumentViewer() {
       />
     );
   } else if (ext === "txt") {
-    const [textContent, setTextContent] = useState<string>("");
-
-    useEffect(() => {
-      (async () => {
-        try {
-          const data = await FileSystem.readAsStringAsync(doc.uri);
-          setTextContent(data);
-        } catch {
-          setTextContent("Unable to read text file");
-        }
-      })();
-    }, [doc.uri]);
-    
-  } else if (["pdf", "doc", "docx"].includes(ext!)) {
+    content = (
+      <ScrollView style={{ marginVertical: 12 }}>
+        <Text>{textContent}</Text>
+      </ScrollView>
+    );
+  }
+    else if (["pdf", "doc", "docx"].includes(ext!)) {
     content = (
       <Button
         title={`Open ${ext?.toUpperCase()} in viewer`}
@@ -59,13 +70,18 @@ export default function DocumentViewer() {
 
   return (
     <Screen title="Document Viewer">
-      <Text style={{ fontWeight: "bold", fontSize: 18 }}>{doc.name}</Text>
-      <Text>Category: {doc.category}</Text>
-      <Text>Size: {doc.size ?? 0} bytes</Text>
+     <ScrollView
+        contentContainerStyle={{ paddingBottom: 40 }}
+        showsVerticalScrollIndicator={false}
+      >
+        <Text style={{ fontWeight: "bold", fontSize: 18 }}>{doc.name}</Text>
+        <Text>Category: {doc.category}</Text>
+        <Text>Size: {doc.size ?? 0} bytes</Text>
 
-      {content}
+        {content}
 
-      <Button title="Download" onPress={handleDownload} />
+        <Button title="Download" onPress={handleDownload} />
+      </ScrollView>
     </Screen>
   );
 }

@@ -18,23 +18,6 @@ export function Button({ title, onPress, disabled }: Props) {
   );
 }
 
-// const styles = StyleSheet.create({
-//   button: {
-//     backgroundColor: '#0066cc',
-//     paddingVertical: 12,
-//     borderRadius: 6,
-//     alignItems: 'center',
-//     marginVertical: 8,
-//   },
-//   disabled: {
-//     backgroundColor: '#ccc',
-//   },
-//   text: {
-//     color: '#fff',
-//     fontWeight: '600',
-//     fontSize: 16,
-//   },
-// });
 const styles = StyleSheet.create({
   button: {
     backgroundColor: '#007AFF', // iOS blue

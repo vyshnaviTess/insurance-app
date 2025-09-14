@@ -82,7 +82,7 @@ export default function PolicyDetails() {
 
             if (ext && ["jpg", "jpeg", "png", "heic"].includes(ext)) {
               return (
-                <Link key={doc.id} href={`/documents/${doc.id}`} asChild>
+                <Link key={doc.id} href={`/document/${doc.id}`} asChild>
                   <Pressable style={styles.imageCard}>
                     <Image
                       source={{ uri: doc.uri }}
@@ -100,7 +100,7 @@ export default function PolicyDetails() {
             if (ext === "txt") icon = "document-attach-outline";
 
             return (
-              <Link key={doc.id} href={`/documents/${doc.id}`} asChild>
+              <Link key={doc.id} href={`/document/${doc.id}`} asChild>
                 <Card
                   title={doc.name}
                   subtitle={ext?.toUpperCase() ?? "FILE"}

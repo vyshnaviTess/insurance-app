@@ -1,5 +1,7 @@
 import { ApiClient } from '../api/client';
 import type { InsurancePolicy } from '../../domain/entities/insurancePolicy';
+import { PolicyDTO, fromDTO, toDTO } from '../mappers/policyMapper';
+
 
 export interface PolicyRepository {
   list(): Promise<InsurancePolicy[]>;
@@ -10,9 +12,18 @@ export interface PolicyRepository {
 
 export class RemotePolicyRepository implements PolicyRepository {
   constructor(private api: ApiClient) {}
-  list() { return this.api.get<InsurancePolicy[]>('/policies'); }
-  create(p: InsurancePolicy) { return this.api.post<InsurancePolicy>('/policies', p); }
-  update(p: InsurancePolicy) { return this.api.put<InsurancePolicy>(`/policies/${p.id}`, p); }
+  async list() {
+    const dtos = await this.api.get<PolicyDTO[]>('/policies');
+    return dtos.map(fromDTO);
+  }
+  async create(p: InsurancePolicy) {
+    const dto = await this.api.post<PolicyDTO>('/policies', toDTO(p));
+    return fromDTO(dto);
+  }
+  async update(p: InsurancePolicy) {
+    const dto = await this.api.put<PolicyDTO>(`/policies/${p.id}`, toDTO(p));
+    return fromDTO(dto);
+  }
   remove(id: string) { return this.api.delete<void>(`/policies/${id}`); }
 }
 

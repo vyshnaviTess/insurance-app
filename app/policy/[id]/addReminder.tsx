@@ -35,6 +35,7 @@ export default function AddReminder() {
         id: reminderId,
         title,
         dueAt: dueDate.toISOString(),
+        type,
       })
     );
     dispatch(

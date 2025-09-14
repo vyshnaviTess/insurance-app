@@ -7,4 +7,3 @@ export interface Document {
   size?: number;
   mime?: string;
 }
-//TODO: not used yet

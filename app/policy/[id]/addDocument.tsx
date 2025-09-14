@@ -4,7 +4,7 @@ import { pickFromLibrary, pickFromCamera } from "@/services/imagePicker";
 import { persistAsset } from "@/services/fileStorage";
 import { documentsActions } from "@/store/documentSlice";
 import { policiesActions } from "@/store/policiesSlice";
-import { Document } from "@/domain/entities/insurancePolicy";
+import { Document } from "@/domain/entities/document";
 import { Button } from "@/ui/components/Button";
 import { Screen } from "@/ui/components/Screen";
 

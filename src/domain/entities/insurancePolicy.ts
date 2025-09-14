@@ -1,15 +1,5 @@
 export type InsuranceType = 'car' | 'van' | 'motorbike' | 'house';
 
-export interface Document {
-  id: string;
-  uri: string;        // local file:// or remote https://
-  name: string;
-  category: 'policy' | 'receipt' | 'id' | 'other';
-  createdAt: string;  // ISO
-  size?: number;
-  mime?: string;
-}
-
 export interface Reminder {
   id: string;
   type: 'renewal' | 'payment' | 'custom';

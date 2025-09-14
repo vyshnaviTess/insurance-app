@@ -132,19 +132,15 @@ Jest + React Native Testing Library
 
 ## 📷 Screenshots
 
-### Dashboard
-![Dashboard policies when empty](./assets/screenshots/Dashboard2.jpeg)
+<p align="center">
+  <img src="./assets/screenshots/Dashboard2.jpeg" width="250" />
+  <img src="./assets/screenshots/add-policy.jpeg" width="250" />
+  <img src="./assets/screenshots/Dashboard.jpeg" width="250" />
+</p>
+<p align="center">
+  <img src="./assets/screenshots/add-documnet.jpeg" width="250" />
+  <img src="./assets/screenshots/document-viewer.jpeg" width="250" />
+  <img src="./assets/screenshots/add_reminder.jpeg" width="250" />
+</p>
 
-![Dashboard policies](./assets/screenshots/Dashboard.jpeg)
-
-### Add Policy
-![Add Policy](./assets/screenshots/add-policy.jpeg)
-
-### Add Document
-![Add Policy](./assets/screenshots/add-documnet.jpeg)
-
-### Document Viewer
-![Document Viewer](./assets/screenshots/document-viewer.jpeg)
-
-### Reminders
-![Reminders](./assets/screenshots/add_reminder.jpeg)
+Built by [Vyshnavi Taliyakula] as part of the Insurance App Technical Challenge.

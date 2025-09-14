@@ -1,11 +1,37 @@
-import * as Notifications from 'expo-notifications';
-import { scheduleLocal } from '../src/services/notifications';
+import * as Notifications from "expo-notifications";
+import { scheduleLocal } from "../src/services/notifications";
 
-jest.mock('expo-notifications');
+jest.mock("expo-notifications");
 
-test('schedules a notification', async () => {
-  (Notifications.getPermissionsAsync as any).mockResolvedValue({ status: 'granted' });
-  (Notifications.scheduleNotificationAsync as any).mockResolvedValue('notif-1');
-  const id = await scheduleLocal('Title', 'Body', new Date('2030-01-01'));
-  expect(id).toBe('notif-1');
+describe("notifications", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test("schedules a notification with correct params", async () => {
+    // Mock granted permissions
+    (Notifications.getPermissionsAsync as jest.Mock).mockResolvedValue({
+      status: "granted",
+    });
+
+    // Mock scheduled notification ID
+    (Notifications.scheduleNotificationAsync as jest.Mock).mockResolvedValue(
+      "notif-1"
+    );
+
+    const date = new Date("2030-01-01T10:00:00Z");
+    const id = await scheduleLocal("Test Title", "Test Body", date);
+
+    expect(id).toBe("notif-1");
+
+    // ✅ Check that scheduleNotificationAsync was called with correct data
+    expect(Notifications.scheduleNotificationAsync).toHaveBeenCalledWith({
+      content: {
+        title: "Test Title",
+        body: "Test Body",
+        sound: "default",
+      },
+      trigger: { date },
+    });
+  });
 });

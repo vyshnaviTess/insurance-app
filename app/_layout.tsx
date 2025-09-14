@@ -3,12 +3,17 @@ import { Provider } from 'react-redux';
 import { store, persistor } from '../src/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { LoadingView } from '../src/ui/feedback/LoadingView';
-import { StyleSheet } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
 
 export default function Layout() {
   return (
    <Provider store={store}>
       <PersistGate loading={<LoadingView />} persistor={persistor}>
+      <StatusBar
+          barStyle="dark-content"   // dark text/icons
+          backgroundColor="#fff"    // match header background
+          translucent={false}       // ensures header is below status bar
+        />
         <Stack screenOptions={{
             headerShadowVisible: false,
             headerStyle: styles.header,          

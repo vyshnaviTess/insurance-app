@@ -134,12 +134,12 @@ Jest + React Native Testing Library
 
 <p align="center">
   <img src="./assets/screenshots/Dashboard2.jpeg" width="250" />
-  <img src="./assets/screenshots/add-policy.jpeg" width="250" />
+  <img src="./assets/screenshots/add_policy.jpeg" width="250" />
   <img src="./assets/screenshots/Dashboard.jpeg" width="250" />
 </p>
 <p align="center">
-  <img src="./assets/screenshots/add-documnet.jpeg" width="250" />
-  <img src="./assets/screenshots/document-viewer.jpeg" width="250" />
+  <img src="./assets/screenshots/add_documnet.jpeg" width="250" />
+  <img src="./assets/screenshots/document_viewer.jpeg" width="250" />
   <img src="./assets/screenshots/add_reminder.jpeg" width="250" />
 </p>
 

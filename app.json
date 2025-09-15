@@ -14,7 +14,12 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.insuranceapp"
+      "bundleIdentifier": "com.anonymous.insuranceapp",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "This app requires access to your photo library to upload policy documents.",
+        "NSCameraUsageDescription": "This app requires camera access to take photos for policy documents.",
+        "NSMicrophoneUsageDescription": "This app requires microphone access if you want to capture audio with videos."
+      }
     },
     "android": {
       "adaptiveIcon": {

@@ -24,7 +24,6 @@ export default function Layout() {
           <Stack.Screen name="policy/new" options={{ title: "New Policy" }} />
           <Stack.Screen name="policy/[id]" options={{ title: "Policy Details" }} />
           <Stack.Screen name="policy/[id]/editPolicy" options={{ title: "Edit Policy" }} />
-          <Stack.Screen name="policy/[id]/deletePolicy" options={{ title: "Delete Policy" }} />
           <Stack.Screen name="policy/[id]/addDocument" options={{ title: "Add Document" }} />
           <Stack.Screen name="policy/[id]/addReminder" options={{ title: "Add Reminder" }} />
           <Stack.Screen name="document/[documentId]" options={{ title: "Document Viewer" }} />

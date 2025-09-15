@@ -11,4 +11,3 @@ export function Ok<T>(value: T): Result<T, never> {
 export function Err<E>(error: E): Result<never, E> {
   return { ok: false, error };
 }
-//TODO: not used yet, can be used in future for handling results without exceptions

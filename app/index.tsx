@@ -1,19 +1,21 @@
 import { Alert, FlatList, Pressable } from "react-native";
 import { Link, useRouter } from "expo-router";
-import { useSelector, useDispatch } from "react-redux";
-import { policiesSelectors, policiesActions } from "@/store/policiesSlice";
 import { Screen } from "@/ui/components/Screen";
 import { Card } from "@/ui/components/Card";
 import { Button } from "@/ui/components/Button";
 import { EmptyState } from "@/ui/components/EmptyState";
 import { formatDate } from "@/utils/dates";
 import { Ionicons } from "@expo/vector-icons";
-import { deletePolicy } from "@/domain/usecases/deletePolicy";
+import { useEffect } from "react";
+import { usePolicies } from "@/hooks/usePolicies";
 
 export default function Home() {
-  const policies = useSelector(policiesSelectors.selectAll);
-  const dispatch = useDispatch();
+  const { policies, removePolicy, fetchAndSync } = usePolicies();
   const router = useRouter();
+  
+   useEffect(() => {
+    fetchAndSync(); // fetch latest policies on mount
+  }, []);
 
  const confirmDelete = (id: string) => {
     Alert.alert(
@@ -28,7 +30,7 @@ export default function Home() {
           text: "Yes",
           style: "destructive",
           onPress: () => {
-            deletePolicy(id)(dispatch);
+            removePolicy(id);
           },
         },
       ],

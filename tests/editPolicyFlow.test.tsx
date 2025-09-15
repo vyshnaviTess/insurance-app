@@ -5,6 +5,12 @@ import { store } from "../src/store";
 import { policiesActions } from "../src/store/policiesSlice";
 import { InsurancePolicy } from "../src/domain/entities/insurancePolicy";
 
+// Mock expo-router to return the right policy ID
+jest.mock("expo-router", () => ({
+  useRouter: () => ({ push: jest.fn(), back: jest.fn(), replace: jest.fn() }),
+  useLocalSearchParams: () => ({ id: "p1" }), // ✅ make sure EditPolicy sees "p1"
+}));
+
 test("edits a policy provider", () => {
   const policy: InsurancePolicy = {
     id: "p1",

@@ -1,20 +1,23 @@
 import type { Middleware } from '@reduxjs/toolkit';
 import NetInfo from '@react-native-community/netinfo';
 import { dequeue } from '../offlineQueueSlice';
-import { policiesActions } from '../policiesSlice';
 import { ApiClient } from '../../data/api/client';
 import { RemotePolicyRepository } from '../../data/repositories/policyRepository';
 
 const api = new ApiClient({ baseUrl: 'https://mock.api' });
 const repo = new RemotePolicyRepository(api);
 
+let intervalId: ReturnType<typeof setInterval> | null = null;
+
 const offlineSync: Middleware = store => {
   let syncing = false;
+
   const tryFlush = async () => {
     if (syncing) return;
     const state: any = store.getState();
     const jobs = state.offlineQueue as any[];
     if (!jobs.length) return;
+    
     const net = await NetInfo.fetch();
     if (!net.isConnected) return;
 
@@ -34,9 +37,18 @@ const offlineSync: Middleware = store => {
     }
   };
 
-  // Poll cheap & cheerful; in prod use listeners / app focus events
-  setInterval(tryFlush, 4000);
+if (!intervalId) {
+    intervalId = setInterval(tryFlush, 4000);
+  }
   return next => action => next(action);
+};
+
+// ✅ Helper to clear interval (for tests if ever needed)
+export const __clearOfflineSync = () => {
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
 };
 
 export default offlineSync;

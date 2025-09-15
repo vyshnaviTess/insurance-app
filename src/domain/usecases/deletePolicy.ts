@@ -5,4 +5,4 @@ export const deletePolicy =
   (id: string) => async (dispatch: AppDispatch) => {
     dispatch(policiesActions.removePolicy(id));
   };
-//TODO: not used yet
+  

@@ -38,7 +38,7 @@ test("maps DTOs to domain and back", async () => {
     return createJsonResponse({}, false, 404);
   });
 
-  const api = new ApiClient({ baseUrl: "https://mock.api", fetchImpl: mockFetch });
+  const api = new ApiClient({ baseUrl: 'https://192.168.0.19:3000', fetchImpl: mockFetch });
   const repo = new RemotePolicyRepository(api);
 
   const list = await repo.list();

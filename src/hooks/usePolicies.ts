@@ -9,6 +9,7 @@ import { deletePolicy } from "@/domain/usecases/deletePolicy";
 import { syncPolicies } from "@/domain/usecases/syncPolicies";
 import { ApiClient } from "@/data/api/client";
 import { RemotePolicyRepository } from "@/data/repositories/policyRepository";
+import { API_BASE_URL } from "@/config/env";
 
 export function usePolicies() {
   const dispatch = useDispatch<AppDispatch>();
@@ -28,7 +29,7 @@ export function usePolicies() {
 
   // Sync policies with API
   const fetchAndSync = () => {
-    const client = new ApiClient({ baseUrl: "https://mock.api" });
+    const client = new ApiClient({ baseUrl: API_BASE_URL });
     // const api = new PolicyApi(client);
     const repo = new RemotePolicyRepository(client);
     dispatch(syncPolicies(repo));

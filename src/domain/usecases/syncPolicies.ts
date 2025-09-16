@@ -21,8 +21,14 @@ export const syncPolicies =
           // local newer → push up
           await repo.update(l);
         } else if ((r.lastModified ?? 0) > (l.lastModified ?? 0)) {
-          // server newer → overwrite local
-          dispatch(policiesActions.upsertPolicy(r));
+          // ✅ remote is newer → merge with local documents/reminders
+          dispatch(
+            policiesActions.upsertPolicy({
+              ...r,
+              documents: l.documents ?? [],
+              reminders: l.reminders ?? [],
+            })
+          );
         }
       }
 

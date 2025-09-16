@@ -3,8 +3,9 @@ import NetInfo from '@react-native-community/netinfo';
 import { dequeue } from '../offlineQueueSlice';
 import { ApiClient } from '../../data/api/client';
 import { RemotePolicyRepository } from '../../data/repositories/policyRepository';
+import { API_BASE_URL } from '@/config/env';
 
-const api = new ApiClient({ baseUrl: 'https://mock.api' });
+const api = new ApiClient({ baseUrl: API_BASE_URL });
 const repo = new RemotePolicyRepository(api);
 
 let intervalId: ReturnType<typeof setInterval> | null = null;

@@ -144,6 +144,6 @@ Jest + React Native Testing Library
 </p>
 
  ### Tests Coverage
- ![Reminders](./assets/screenshots/tests_coverage.png)
+ ![Tests](./assets/screenshots/tests_coverage.png)
 
 Built by [Vyshnavi Taliyakula] as part of the Insurance App Technical Challenge.

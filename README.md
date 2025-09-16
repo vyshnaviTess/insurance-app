@@ -143,4 +143,7 @@ Jest + React Native Testing Library
   <img src="./assets/screenshots/add_reminder.jpeg" width="250" />
 </p>
 
+ ### Tests Coverage
+ ![Reminders](./assets/screenshots/tests_coverage.png)
+
 Built by [Vyshnavi Taliyakula] as part of the Insurance App Technical Challenge.

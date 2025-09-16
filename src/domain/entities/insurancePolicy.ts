@@ -19,4 +19,10 @@ export interface InsurancePolicy {
   coverage: Record<string, unknown>;
   documents: string[]; // Document IDs (normalized)
   reminders: string[]; // Reminder IDs (normalized)
+  lastModified?: number; // timestamp
+}
+
+// Helper to set/update lastModified whenever policy changes
+export function withTimestamp(policy: Omit<InsurancePolicy, "lastModified">): InsurancePolicy {
+  return { ...policy, lastModified: Date.now() };
 }

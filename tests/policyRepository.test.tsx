@@ -1,6 +1,6 @@
 import { ApiClient } from "../src/data/api/client";
 import { RemotePolicyRepository } from "../src/data/repositories/policyRepository";
-
+import { API_BASE_URL } from "../src/config/env";
 // Helper to build a fake Response
 function createJsonResponse(body: any, ok = true, status = 200): Response {
   return {
@@ -38,7 +38,7 @@ test("maps DTOs to domain and back", async () => {
     return createJsonResponse({}, false, 404);
   });
 
-  const api = new ApiClient({ baseUrl: 'https://192.168.0.19:3000', fetchImpl: mockFetch });
+  const api = new ApiClient({ baseUrl: API_BASE_URL, fetchImpl: mockFetch });
   const repo = new RemotePolicyRepository(api);
 
   const list = await repo.list();

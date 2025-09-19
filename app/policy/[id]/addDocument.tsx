@@ -3,16 +3,16 @@ import { useDispatch } from "react-redux";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { pickFromLibrary, pickFromCamera } from "@/services/imagePicker";
 import { persistAsset } from "@/services/fileStorage";
-import { documentsActions } from "@/store/documentSlice";
-import { policiesActions } from "@/store/policiesSlice";
 import { Document } from "@/domain/entities/document";
 import { Button } from "@/ui/components/Button";
 import { Screen } from "@/ui/components/Screen";
 import { ErrorView } from "@/ui/feedback/ErrorView";
 import { LoadingView } from "@/ui/feedback/LoadingView";
+import { createDocument } from "@/domain/usecases/createDocument";
+import { AppDispatch } from "@/store";
 
 export default function AddDocument() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
 
@@ -41,14 +41,7 @@ export default function AddDocument() {
         createdAt: new Date().toISOString(),
       };
 
-      dispatch(documentsActions.upsertDocument(fullDoc));
-      dispatch(
-        policiesActions.addDocumentToPolicy({
-          policyId: id!,
-          documentId: fullDoc.id,
-        })
-      );
-
+      dispatch(createDocument(id!, fullDoc));
       router.back();
     } catch (e: any) {
       setError(e instanceof Error ? e : new Error("Failed to add document"));

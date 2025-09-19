@@ -7,6 +7,7 @@ const slice = createSlice({
   initialState: docs.getInitialState(),
   reducers: {
     upsertDocument: docs.upsertOne,
+    upsertDocuments: docs.upsertMany, 
     removeDocument: docs.removeOne,
   },
 });

@@ -8,20 +8,27 @@ import { Text, View, Image, StyleSheet, Pressable, ScrollView } from "react-nati
 import { Card } from "@/ui/components/Card";
 import { EmptyState } from "@/ui/components/EmptyState";
 import { ErrorView } from "@/ui/feedback/ErrorView";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { formatDate } from "@/utils/dates";
 import { Ionicons } from "@expo/vector-icons";
+import { useDocuments } from "@/hooks/useDocuments";
 
 export default function PolicyDetails() {
-  const { id } = useLocalSearchParams();
+ const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const [error, setError] = useState<Error | null>(null);
 
   const policy = useSelector((s: any) =>
     policiesSelectors.selectById(s, id as string)
   );
-  const documents = useSelector((s: any) => documentsSelectors.selectAll(s));
   const reminders = useSelector((s: any) => remindersSelectors.selectAll(s));
+  const { documents, fetchAndSyncDocuments } = useDocuments();
+
+  // 🔄 sync docs on mount
+  useEffect(() => {
+    fetchAndSyncDocuments();
+  }, [fetchAndSyncDocuments]);
+
 
   if (error) {
     return <ErrorView message={error.message} onRetry={() => setError(null)} />;

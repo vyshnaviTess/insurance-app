@@ -3,7 +3,7 @@ import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
 export type OfflineJob = {
   id: string;
   type: 'CREATE' | 'UPDATE' | 'DELETE';
-  entity: 'policy';
+  entity: 'policy' | 'document';
   payload: any;
 };
 

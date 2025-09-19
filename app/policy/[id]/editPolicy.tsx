@@ -8,18 +8,19 @@ import { TextField } from "@/ui/components/TextField";
 import { Button } from "@/ui/components/Button";
 import { updatePolicy } from "@/domain/usecases/updatePolicy";
 import { AppDispatch } from "@/store";
+import { usePolicies } from "@/hooks/usePolicies";
 
 export default function EditPolicy() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const policy = useSelector((s: any) => policiesSelectors.selectById(s, id!));
   const [provider, setProvider] = useState(policy?.provider ?? "");
-  const dispatch = useDispatch<AppDispatch>();
+   const { editPolicy } = usePolicies(); 
   const router = useRouter();
 
   if (!policy) return <Screen title="Edit Policy"><Text>Not found</Text></Screen>;
 
   function handleSave() {
-   dispatch(updatePolicy({ ...policy, provider })); 
+   editPolicy({ ...policy, provider, lastModified: Date.now() });
     router.back();
   }
 

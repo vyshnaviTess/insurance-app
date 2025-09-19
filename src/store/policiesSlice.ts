@@ -2,8 +2,13 @@ import { createSlice, createEntityAdapter, createSelector, PayloadAction } from 
 import type { InsurancePolicy } from '../domain/entities/insurancePolicy';
 
 const policiesAdapter = createEntityAdapter<InsurancePolicy>({
-  sortComparer: (a, b) => a.endDate.localeCompare(b.endDate),
+  sortComparer: (a, b) => {
+    const aDate = a.endDate ?? "";
+    const bDate = b.endDate ?? "";
+    return aDate.localeCompare(bDate);
+  },
 });
+
 
 const slice = createSlice({
   name: 'policies',

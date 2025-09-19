@@ -4,42 +4,17 @@
       "id": "1",
       "type": "car",
       "provider": "Demo Provider",
-      "policyNumber": "P1",
-      "startDate": "2024-01-01",
-      "endDate": "2025-01-01",
       "premium": 100,
       "coverage": {},
-      "documents": [],
-      "reminders": []
-    },
-    {
-      "id": "0S3hmRO-fn7noeBB--Cfn",
-      "type": "car",
-      "provider": "Mbdkejhd",
-      "policy_number": "ABC-123",
-      "start_date": "2025-09-16T18:46:08.869Z",
-      "end_date": "2025-12-25T18:46:08.869Z",
-      "premium": 500,
-      "coverage": {},
-      "documents": [],
-      "reminders": []
-    },
-    {
-      "id": "dn7fJo6tadtooaagvuhCx",
-      "type": "van",
-      "provider": "Jgeiuwdyied",
-      "policy_number": "ABC-123",
-      "start_date": "2025-09-16T18:46:20.785Z",
-      "end_date": "2025-12-25T18:46:20.785Z",
-      "premium": 500,
-      "coverage": {},
-      "documents": [],
+      "documents": [
+        "iJ8_z66qYy0SzLF-DnLy9"
+      ],
       "reminders": []
     },
     {
       "id": "yeSshvizX_-K70bLUd46z",
       "type": "house",
-      "provider": "Test",
+      "provider": "Test updated",
       "policy_number": "ABC-123",
       "start_date": "2025-09-16T18:48:03.335Z",
       "end_date": "2025-12-25T18:48:03.335Z",
@@ -47,6 +22,67 @@
       "coverage": {},
       "documents": [],
       "reminders": []
+    },
+    {
+      "id": "hqc6IGPT7Y3VeHrUFcYgR",
+      "type": "house",
+      "provider": "Test",
+      "policy_number": "ABC-123",
+      "start_date": "2025-09-19T19:48:08.679Z",
+      "end_date": "2025-12-28T19:48:08.679Z",
+      "premium": 500,
+      "coverage": {},
+      "documents": [],
+      "reminders": []
+    },
+    {
+      "id": "8Cyy90Xm7CCgm0d1Ontbl",
+      "type": "car",
+      "provider": "Test",
+      "policy_number": "ABC-123",
+      "start_date": "2025-09-19T19:50:54.512Z",
+      "end_date": "2025-12-28T19:50:54.512Z",
+      "premium": 500,
+      "coverage": {},
+      "documents": [],
+      "reminders": []
+    },
+    {
+      "id": "QTRUiCxDihhd4oycuBvK_",
+      "type": "motorbike",
+      "provider": "New Policy",
+      "policy_number": "ABC-123",
+      "start_date": "2025-09-19T21:29:08.951Z",
+      "end_date": "2025-12-28T21:29:08.951Z",
+      "premium": 500,
+      "coverage": {},
+      "documents": [],
+      "reminders": []
+    }
+  ],
+  "documents": [
+    {
+      "id": "doc1",
+      "uri": "file://...",
+      "name": "policy-photo.jpg",
+      "category": "policy",
+      "created_at": "2025-09-19T10:30:00.000Z"
+    },
+    {
+      "id": "VKiJlt5XswtqYrB3U0Vra",
+      "uri": "file:///Users/vyshnavitaliyakula/Library/Developer/CoreSimulator/Devices/4937AF00-D1EC-43C2-A85D-74CF78EA8D89/data/Containers/Data/Application/FA6587D4-2D7E-4B90-BAF7-FE591078DDE1/Documents/ExponentExperienceData/@anonymous/insurance-app-da0995ab-69ab-4979-bc5c-82209d075971/docs/VKiJlt5XswtqYrB3U0Vra.heic",
+      "name": "IMG_0111.heic",
+      "category": "policy",
+      "created_at": "2025-09-19T21:04:10.343Z",
+      "size": 2808983
+    },
+    {
+      "id": "iJ8_z66qYy0SzLF-DnLy9",
+      "uri": "file:///Users/vyshnavitaliyakula/Library/Developer/CoreSimulator/Devices/4937AF00-D1EC-43C2-A85D-74CF78EA8D89/data/Containers/Data/Application/156D6E11-7B4F-4CA3-B862-FADA6616E443/Documents/ExponentExperienceData/@anonymous/insurance-app-da0995ab-69ab-4979-bc5c-82209d075971/docs/iJ8_z66qYy0SzLF-DnLy9.jpeg",
+      "name": "IMG_0002.jpeg",
+      "category": "policy",
+      "created_at": "2025-09-19T21:19:02.080Z",
+      "size": 2567402
     }
   ]
 }

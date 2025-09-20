@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">82.6% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>20/24</span>
+                <span class='fraction'>19/23</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.95% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/23</span>
+                <span class='fraction'>18/21</span>
             </div>
         
             
@@ -143,9 +143,7 @@
 <a name='L78'></a><a href='#L78'>78</a>
 <a name='L79'></a><a href='#L79'>79</a>
 <a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L81'></a><a href='#L81'>81</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -170,19 +168,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -190,12 +175,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -205,8 +203,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -230,18 +226,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { pickFromLibrary, pickFromCamera } from "@/services/imagePicker";
+import { pickFromDocuments, pickFromCamera } from "@/services/imagePicker";
 import { persistAsset } from "@/services/fileStorage";
-import { documentsActions } from "@/store/documentSlice";
-import { policiesActions } from "@/store/policiesSlice";
 import { Document } from "@/domain/entities/document";
 import { Button } from "@/ui/components/Button";
 import { Screen } from "@/ui/components/Screen";
 import { ErrorView } from "@/ui/feedback/ErrorView";
 import { LoadingView } from "@/ui/feedback/LoadingView";
+import { createDocument } from "@/domain/usecases/createDocument";
+import { AppDispatch } from "@/store";
 &nbsp;
 export default function AddDocument() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch&lt;AppDispatch&gt;();
   const { id } = useLocalSearchParams&lt;{ id: string }&gt;();
   const router = useRouter();
 &nbsp;
@@ -249,7 +245,12 @@ export default function AddDocument() {
   const [error, setError] = useState&lt;Error | null&gt;(null);
 &nbsp;
   async function handleAdd(
-    pickFn: typeof pickFromLibrary | typeof pickFromCamera,
+    pickFn: () =&gt; Promise&lt;{
+      uri: string;
+      name?: string;
+      mime?: string;
+      size?: number;
+    } | null&gt;,
     category: Document["category"]
   ) {
     try {
@@ -261,23 +262,18 @@ export default function AddDocument() {
 &nbsp;
       const stored = await persistAsset({
         uri: asset.uri,
-        fileName: asset.fileName ?? <span class="branch-1 cbranch-no" title="branch not covered" >undefined,</span>
+        fileName: asset.name ?? <span class="branch-1 cbranch-no" title="branch not covered" >undefined,</span> // 👈 use `name` instead of fileName
       });
 &nbsp;
       const fullDoc: Document = {
         ...stored,
         category,
         createdAt: new Date().toISOString(),
+        size: asset.size,
+        mime: asset.mime,
       };
 &nbsp;
-      dispatch(documentsActions.upsertDocument(fullDoc));
-      dispatch(
-        policiesActions.addDocumentToPolicy({
-          policyId: id!,
-          documentId: fullDoc.id,
-        })
-      );
-&nbsp;
+      dispatch(createDocument(id!, fullDoc));
       router.back();
     } catch (e: any) {
 <span class="cstat-no" title="statement not covered" >      setError(e instanceof Error ? e : new Error("Failed to add document"));</span>
@@ -286,9 +282,7 @@ export default function AddDocument() {
     }
   }
 &nbsp;
-  if (busy) {
-    return &lt;LoadingView /&gt;;
-  }
+  if (busy) return &lt;LoadingView /&gt;;
 &nbsp;
   return (
     &lt;Screen title="Add Document"&gt;
@@ -297,8 +291,8 @@ export default function AddDocument() {
       )}
 &nbsp;
       &lt;Button
-        title="Pick from library"
-        onPress={() =&gt; handleAdd(pickFromLibrary, "policy")}
+        title="Pick a file"
+        onPress={() =&gt; handleAdd(pickFromDocuments, "policy")}
         disabled={busy}
       /&gt;
       &lt;Button
@@ -316,7 +310,7 @@ export default function AddDocument() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-15T14:50:38.976Z
+                at 2025-09-20T13:18:37.449Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -44,10 +44,45 @@ jest.mock("expo-notifications", () => {
 
 // ✅ Mock expo-image-picker
 jest.mock("expo-image-picker", () => ({
-  launchCameraAsync: jest.fn().mockResolvedValue({ cancelled: false, uri: "mock-camera.jpg" }),
-  launchImageLibraryAsync: jest.fn().mockResolvedValue({ cancelled: false, uri: "mock-gallery.jpg" }),
   requestCameraPermissionsAsync: jest.fn().mockResolvedValue({ status: "granted" }),
   requestMediaLibraryPermissionsAsync: jest.fn().mockResolvedValue({ status: "granted" }),
+  launchCameraAsync: jest.fn().mockResolvedValue({
+    canceled: false,
+    assets: [
+      {
+        uri: "file://mock-camera.jpg",
+        fileName: "mock-camera.jpg",
+        mimeType: "image/jpeg",
+        fileSize: 11111,
+      },
+    ],
+  }),
+  launchImageLibraryAsync: jest.fn().mockResolvedValue({
+    canceled: false,
+    assets: [
+      {
+        uri: "file://mock-gallery.jpg",
+        fileName: "mock-gallery.jpg",
+        mimeType: "image/jpeg",
+        fileSize: 22222,
+      },
+    ],
+  }),
+}));
+
+// ✅ Mock expo-document-picker
+jest.mock("expo-document-picker", () => ({
+  getDocumentAsync: jest.fn().mockResolvedValue({
+    canceled: false,
+    assets: [
+      {
+        uri: "file://mock-file.pdf",
+        name: "mock-file.pdf",
+        mimeType: "application/pdf",
+        size: 12345,
+      },
+    ],
+  }),
 }));
 
 // ✅ Mock expo-file-system

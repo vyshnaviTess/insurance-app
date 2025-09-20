@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/ui/components/Screen.tsx</title>
+    <title>Code coverage report for src/data/repositories/remoteRepository.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/ui/components</a> Screen.tsx</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/data/repositories</a> remoteRepository.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>5/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>5/10</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -97,25 +97,11 @@
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -128,43 +114,69 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ReactNode } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// src/data/repositories/remoteRepository.ts
+import { ApiClient } from "../api/client";
+import { Repository } from "./baseRepository";
+import { Mapper } from "../mappers/baseMapper";
 &nbsp;
-type Props = {
-  title?: string;
-  children: ReactNode;
-};
+export class RemoteRepository&lt;Domain, DTO&gt; implements Repository&lt;Domain&gt; {
+  constructor(
+    private client: ApiClient,
+     protected endpoint: string, 
+    private mapper: Mapper&lt;Domain, DTO&gt;
+  ) {}
 &nbsp;
-export function Screen({ title, children }: Props) {
-  return (
-    &lt;SafeAreaView style={styles.container}&gt;
-      {title &amp;&amp; &lt;Text style={styles.title}&gt;{title}&lt;/Text&gt;}
-      &lt;View style={styles.content}&gt;{children}&lt;/View&gt;
-    &lt;/SafeAreaView&gt;
-  );
+  async list(): Promise&lt;Domain[]&gt; {
+    const res = await this.client.get&lt;DTO[]&gt;(this.endpoint);
+    return res.map(this.mapper.fromDTO);
+  }
+&nbsp;
+ async get(id: string): Promise&lt;Domain&gt; {  // 👈 add this
+    const dto = await this.client.get&lt;DTO&gt;(`${this.endpoint}/${id}`);
+<span class="cstat-no" title="statement not covered" >    return this.mapper.fromDTO(dto);</span>
+  }
+&nbsp;
+  async create(item: Domain): Promise&lt;Domain&gt; {
+    const res = await this.client.post&lt;DTO&gt;(this.endpoint, this.mapper.toDTO(item));
+    return this.mapper.fromDTO(res);
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  as</span>ync update(item: Domain): Promise&lt;Domain&gt; {
+    const id = <span class="cstat-no" title="statement not covered" >(item as any).id;</span>
+    const res = <span class="cstat-no" title="statement not covered" >await this.client.put&lt;DTO&gt;(`${this.endpoint}/${id}`, this.mapper.toDTO(item));</span>
+<span class="cstat-no" title="statement not covered" >    return this.mapper.fromDTO(res);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  as</span>ync remove(id: string): Promise&lt;void&gt; {
+    // console.log("Calling DELETE:", `${this.endpoint}/${id}`);
+<span class="cstat-no" title="statement not covered" >    await this.client.delete(`${this.endpoint}/${id}`);</span>
+  }
 }
-&nbsp;
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 16,
-    // paddingTop: 12,
-    backgroundColor: '#fff',
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: '600',
-    marginBottom: 12,
-  },
-  content: {
-    flex: 1,
-  },
-});
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

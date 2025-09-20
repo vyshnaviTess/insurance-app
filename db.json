@@ -1,17 +1,6 @@
 {
   "policies": [
     {
-      "id": "1",
-      "type": "car",
-      "provider": "Demo Provider",
-      "premium": 100,
-      "coverage": {},
-      "documents": [
-        "iJ8_z66qYy0SzLF-DnLy9"
-      ],
-      "reminders": []
-    },
-    {
       "id": "yeSshvizX_-K70bLUd46z",
       "type": "house",
       "provider": "Test updated",
@@ -20,31 +9,9 @@
       "end_date": "2025-12-25T18:48:03.335Z",
       "premium": 500,
       "coverage": {},
-      "documents": [],
-      "reminders": []
-    },
-    {
-      "id": "hqc6IGPT7Y3VeHrUFcYgR",
-      "type": "house",
-      "provider": "Test",
-      "policy_number": "ABC-123",
-      "start_date": "2025-09-19T19:48:08.679Z",
-      "end_date": "2025-12-28T19:48:08.679Z",
-      "premium": 500,
-      "coverage": {},
-      "documents": [],
-      "reminders": []
-    },
-    {
-      "id": "8Cyy90Xm7CCgm0d1Ontbl",
-      "type": "car",
-      "provider": "Test",
-      "policy_number": "ABC-123",
-      "start_date": "2025-09-19T19:50:54.512Z",
-      "end_date": "2025-12-28T19:50:54.512Z",
-      "premium": 500,
-      "coverage": {},
-      "documents": [],
+      "documents": [
+        "Mor5tT7VOlfre5ohLiUaY"
+      ],
       "reminders": []
     },
     {
@@ -54,6 +21,54 @@
       "policy_number": "ABC-123",
       "start_date": "2025-09-19T21:29:08.951Z",
       "end_date": "2025-12-28T21:29:08.951Z",
+      "premium": 500,
+      "coverage": {},
+      "documents": [],
+      "reminders": []
+    },
+    {
+      "id": "S10ESuIJYysYS8mruMybX",
+      "type": "motorbike",
+      "provider": "Test",
+      "policy_number": "ABC-123",
+      "start_date": "2025-09-20T10:06:37.208Z",
+      "end_date": "2025-12-29T10:06:37.208Z",
+      "premium": 500,
+      "coverage": {},
+      "documents": [],
+      "reminders": []
+    },
+    {
+      "id": "RK58La4ZfEA6jBUYj3HV5",
+      "type": "car",
+      "provider": "Acme",
+      "policy_number": "ABC-123",
+      "start_date": "2025-09-20T13:03:38.177Z",
+      "end_date": "2025-12-29T13:03:38.177Z",
+      "premium": 500,
+      "coverage": {},
+      "documents": [],
+      "reminders": []
+    },
+    {
+      "id": "nsfr8yFpkJJyevPapLGp9",
+      "type": "car",
+      "provider": "Acme",
+      "policy_number": "ABC-123",
+      "start_date": "2025-09-20T13:13:08.668Z",
+      "end_date": "2025-12-29T13:13:08.668Z",
+      "premium": 500,
+      "coverage": {},
+      "documents": [],
+      "reminders": []
+    },
+    {
+      "id": "pF6Gd2qUWcnUPtuzj-QZ2",
+      "type": "car",
+      "provider": "Acme",
+      "policy_number": "ABC-123",
+      "start_date": "2025-09-20T13:18:37.277Z",
+      "end_date": "2025-12-29T13:18:37.277Z",
       "premium": 500,
       "coverage": {},
       "documents": [],
@@ -83,6 +98,110 @@
       "category": "policy",
       "created_at": "2025-09-19T21:19:02.080Z",
       "size": 2567402
+    },
+    {
+      "id": "d1",
+      "uri": "mock://file",
+      "name": "test.jpg",
+      "category": "policy",
+      "created_at": "2025-09-20T09:59:30.057Z"
+    },
+    {
+      "id": "2NWU5QExhutw0LYqBwfsO",
+      "uri": "file:///data/user/0/com.anonymous.insuranceapp/files/docs/2NWU5QExhutw0LYqBwfsO.pdf",
+      "name": "flo_cycles_report.pdf",
+      "category": "policy",
+      "created_at": "2025-09-20T11:09:45.542Z",
+      "size": 116096,
+      "mime": "application/pdf"
+    },
+    {
+      "id": "fQ9hkyk9Ao1PEsezRySZu",
+      "uri": "file:///data/user/0/com.anonymous.insuranceapp/files/docs/fQ9hkyk9Ao1PEsezRySZu.jpg",
+      "name": "20250916_230231.jpg",
+      "category": "policy",
+      "created_at": "2025-09-20T11:09:56.582Z",
+      "size": 3670451,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "sQPVZiKP35DbZQscBB69D",
+      "uri": "file:///data/user/0/com.anonymous.insuranceapp/files/docs/sQPVZiKP35DbZQscBB69D.pdf",
+      "name": "LEAP Free Energy Advice_240227_220741.pdf",
+      "category": "policy",
+      "created_at": "2025-09-20T11:30:59.672Z",
+      "size": 429259,
+      "mime": "application/pdf"
+    },
+    {
+      "id": "ExcI6a7c2WvSS2jO0Hkff",
+      "uri": "file:///data/user/0/com.anonymous.insuranceapp/files/docs/ExcI6a7c2WvSS2jO0Hkff.pdf",
+      "name": "LEAP Free Energy Advice_240227_220741.pdf",
+      "category": "policy",
+      "created_at": "2025-09-20T11:33:27.306Z",
+      "size": 429259,
+      "mime": "application/pdf"
+    },
+    {
+      "id": "AxpmEBxDA4i8IaCG9ZFhm",
+      "uri": "file:///data/user/0/com.anonymous.insuranceapp/files/docs/AxpmEBxDA4i8IaCG9ZFhm.pdf",
+      "name": "LEAP Free Energy Advice_240227_220741.pdf",
+      "category": "policy",
+      "created_at": "2025-09-20T11:35:28.211Z",
+      "size": 429259,
+      "mime": "application/pdf"
+    },
+    {
+      "id": "gt1e3iipshEoyRdwD6QAm",
+      "uri": "file:///data/user/0/com.anonymous.insuranceapp/files/docs/gt1e3iipshEoyRdwD6QAm.jpg",
+      "name": "20250919_153019.jpg",
+      "category": "policy",
+      "created_at": "2025-09-20T11:38:51.115Z",
+      "size": 2745706,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "Mor5tT7VOlfre5ohLiUaY",
+      "uri": "file:///data/user/0/com.anonymous.insuranceapp/files/docs/Mor5tT7VOlfre5ohLiUaY.pdf",
+      "name": "LEAP Free Energy Advice_240227_220741.pdf",
+      "category": "policy",
+      "created_at": "2025-09-20T11:42:06.443Z",
+      "size": 429259,
+      "mime": "application/pdf"
+    },
+    {
+      "id": "kw9MqjjmdxJbzdMKk4Ayy",
+      "uri": "file:///data/user/0/com.anonymous.insuranceapp/files/docs/kw9MqjjmdxJbzdMKk4Ayy.pdf",
+      "name": "LEAP Free Energy Advice_240227_220741.pdf",
+      "category": "policy",
+      "created_at": "2025-09-20T11:46:31.206Z",
+      "size": 429259,
+      "mime": "application/pdf"
+    },
+    {
+      "id": "d1",
+      "uri": "mock://file",
+      "name": "test.pdf",
+      "category": "policy",
+      "created_at": "2025-09-20T13:18:36.972Z",
+      "size": 12345,
+      "mime": "application/pdf"
+    },
+    {
+      "id": "NjStZz73wVG3CkRl-uNQe",
+      "uri": "file:///data/user/0/com.anonymous.insuranceapp/files/docs/NjStZz73wVG3CkRl-uNQe.jpg",
+      "name": "document-NjStZz73wVG3CkRl-uNQe.jpg",
+      "category": "policy",
+      "created_at": "2025-09-20T13:23:29.042Z"
+    },
+    {
+      "id": "I1qMMEHYuv6ieEM7S4X6y",
+      "uri": "file:///data/user/0/com.anonymous.insuranceapp/files/docs/I1qMMEHYuv6ieEM7S4X6y.jpg",
+      "name": "20250919_153019.jpg",
+      "category": "policy",
+      "created_at": "2025-09-20T13:23:38.573Z",
+      "size": 2745706,
+      "mime": "image/jpeg"
     }
   ]
 }

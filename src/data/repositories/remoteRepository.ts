@@ -32,6 +32,7 @@ export class RemoteRepository<Domain, DTO> implements Repository<Domain> {
   }
 
   async remove(id: string): Promise<void> {
+    // console.log("Calling DELETE:", `${this.endpoint}/${id}`);
     await this.client.delete(`${this.endpoint}/${id}`);
   }
 }

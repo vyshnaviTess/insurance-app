@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { pickFromLibrary, pickFromCamera } from "@/services/imagePicker";
+import { pickFromDocuments, pickFromCamera } from "@/services/imagePicker";
 import { persistAsset } from "@/services/fileStorage";
 import { Document } from "@/domain/entities/document";
 import { Button } from "@/ui/components/Button";
@@ -20,7 +20,12 @@ export default function AddDocument() {
   const [error, setError] = useState<Error | null>(null);
 
   async function handleAdd(
-    pickFn: typeof pickFromLibrary | typeof pickFromCamera,
+    pickFn: () => Promise<{
+      uri: string;
+      name?: string;
+      mime?: string;
+      size?: number;
+    } | null>,
     category: Document["category"]
   ) {
     try {
@@ -32,13 +37,15 @@ export default function AddDocument() {
 
       const stored = await persistAsset({
         uri: asset.uri,
-        fileName: asset.fileName ?? undefined,
+        fileName: asset.name ?? undefined, // 👈 use `name` instead of fileName
       });
 
       const fullDoc: Document = {
         ...stored,
         category,
         createdAt: new Date().toISOString(),
+        size: asset.size,
+        mime: asset.mime,
       };
 
       dispatch(createDocument(id!, fullDoc));
@@ -50,9 +57,7 @@ export default function AddDocument() {
     }
   }
 
-  if (busy) {
-    return <LoadingView />;
-  }
+  if (busy) return <LoadingView />;
 
   return (
     <Screen title="Add Document">
@@ -61,8 +66,8 @@ export default function AddDocument() {
       )}
 
       <Button
-        title="Pick from library"
-        onPress={() => handleAdd(pickFromLibrary, "policy")}
+        title="Pick a file"
+        onPress={() => handleAdd(pickFromDocuments, "policy")}
         disabled={busy}
       />
       <Button

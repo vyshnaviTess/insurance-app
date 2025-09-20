@@ -1,7 +1,7 @@
 import { useLocalSearchParams } from "expo-router";
 import { useSelector } from "react-redux";
 import * as FileSystem from "expo-file-system/legacy";
-import * as WebBrowser from "expo-web-browser";
+import FileViewer from "react-native-file-viewer";
 import { documentsSelectors } from "@/store/documentSlice";
 import { Screen } from "@/ui/components/Screen";
 import { Text, Alert, Image, ScrollView } from "react-native";
@@ -59,11 +59,18 @@ export default function DocumentViewer() {
   }
     else if (["pdf", "doc", "docx"].includes(ext!)) {
     content = (
-      <Button
-        title={`Open ${ext?.toUpperCase()} in viewer`}
-        onPress={() => WebBrowser.openBrowserAsync(doc.uri)}
-      />
-    );
+    <Button
+      title={`Open ${ext?.toUpperCase()} in viewer`}
+      onPress={async () => {
+        try {
+          await FileViewer.open(doc.uri); // 👈 correct API for react-native-file-viewer
+        } catch (err) {
+          Alert.alert("Error", "Unable to open file in viewer.");
+          console.error("File open error:", err);
+        }
+      }}
+    />
+  );
   } else {
     content = <Text>Preview not available for this file type.</Text>;
   }

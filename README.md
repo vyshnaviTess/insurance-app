@@ -33,9 +33,34 @@ This project was implemented as part of the **Insurance App Technical Challenge*
   - Background sync automatically flushes when network returns  
   - Manual **Sync now** button available  
 
+### Domain Layer (business rules)
+
+- **Entities:**
+- InsurancePolicy (id, type, provider, startDate, endDate, premium, coverage, documents, reminders).
+- Document (id, uri, name, category, createdAt, size, mime).
+- **Use cases:**
+- createPolicy, updatePolicy, deletePolicy, syncPolicies.
+- createDocument, deleteDocument, syncDocuments.
+
+### Data Layer (repositories + API)
+- RemoteRepository<T, DTO>: generic REST repository.
+- RemotePolicyRepository: for /policies.
+- RemoteDocumentRepository: for /documents.
+- Mappers: convert between API DTOs (snake_case) and domain entities (camelCase).
+
+###  Presentation Layer (UI)
+- **React Native + Expo Router screens:** 
+- index.tsx: list of policies.
+- [id].tsx: policy details (docs + reminders).
+- new.tsx: create new policy.
+- addDocument.tsx: attach new document.
+- Reusable components: Screen, Button, Card, EmptyState, LoadingView, etc.
+
 - **State Management**  
   - Redux Toolkit + `createEntityAdapter`  
-  - Normalized slices for `policies`, `documents`, `reminders`, `offlineQueue`  
+  - Normalized slices: `policiesSlice`, `documentsSlice`, `remindersSlice`, `offlineQueueSlice`
+  - offlineQueueSlice: jobs (CREATE, UPDATE, DELETE) for offline actions. 
+  - Middleware offlineSync: flushes queue when network reconnects.
   - Persistent storage via `redux-persist` + AsyncStorage  
 
 - **Architecture**  
@@ -61,7 +86,6 @@ apps/insurance/
 │ │ ├─ new.tsx
 │ │ ├─ [id].tsx
 │ │ ├─ [id]/editPolicy.tsx
-│ │ ├─ [id]/deletePolicy.tsx
 │ │ ├─ [id]/addDocument.tsx
 │ │ ├─ [id]/addReminder.tsx
 │ └─ document/[documentId].tsx

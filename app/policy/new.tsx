@@ -15,7 +15,7 @@ export default function NewPolicy() {
    const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
 
-  function handleSave() {
+  async function handleSave() {
     const id = nanoid();
     const newPolicy = {
     id,
@@ -30,7 +30,7 @@ export default function NewPolicy() {
     reminders: [],
   };
 
-  dispatch(createPolicy(newPolicy));
+  await dispatch(createPolicy(newPolicy));
     router.replace(`/policy/${id}`);
   }
 

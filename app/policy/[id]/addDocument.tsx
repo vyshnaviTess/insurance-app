@@ -48,7 +48,7 @@ export default function AddDocument() {
         mime: asset.mime,
       };
 
-      dispatch(createDocument(id!, fullDoc));
+     await dispatch(createDocument(id!, fullDoc));
       router.back();
     } catch (e: any) {
       setError(e instanceof Error ? e : new Error("Failed to add document"));

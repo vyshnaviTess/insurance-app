@@ -27,7 +27,7 @@ export const createPolicy =
         await repo.create(policy);
       }
     } catch (error) {
-      console.error("Failed to create policy:", error);
+     console.warn("Network failed while creating policy, queuing offline job:", error);
       // Keep optimistic update, but could also enqueue as fallback
       dispatch(enqueue({ type: "CREATE", entity: "policy", payload: policy }));
     }

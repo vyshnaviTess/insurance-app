@@ -11,10 +11,14 @@ export function useDocuments() {
   const dispatch = useDispatch<AppDispatch>();
   const documents = useSelector(documentsSelectors.selectAll);
 
-  const fetchAndSyncDocuments = useCallback(() => {
+  const fetchAndSyncDocuments = useCallback(async () => {
     const client = new ApiClient({ baseUrl: API_BASE_URL });
     const repo = new RemoteDocumentRepository(client);
-    dispatch(syncDocuments(repo));
+    try {
+    await dispatch(syncDocuments(repo));
+    } catch (err) {
+      console.warn("Document sync failed:", err);
+    }
   }, [dispatch]);
 
   return {

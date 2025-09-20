@@ -25,20 +25,27 @@ const offlineSync: Middleware = store => {
     syncing = true;
     try {
       for (const job of jobs) {
-        // console.log("Flushing job:", job);
+        try {
+          console.log("Flushing job:", job);
 
-        if (job.entity === 'policy') {
-          if (job.type === 'CREATE') await repo.create(job.payload);
-          if (job.type === 'UPDATE') await repo.update(job.payload);
-          if (job.type === 'DELETE') 
-            {
-              // console.log("Deleting from server:", job.payload.id);
+          if (job.entity === 'policy') {
+            if (job.type === 'CREATE') {
+              await repo.create(job.payload);
+            } else if (job.type === 'UPDATE') {
+              await repo.update(job.payload);
+            } else if (job.type === 'DELETE') {
+              console.log("Deleting from server:", job.payload.id);
               await repo.remove(job.payload.id);
             }
-          store.dispatch(dequeue(job.id));
+
+            // only dequeue if success
+            store.dispatch(dequeue(job.id));
+          }
+        } catch (err) {
+          console.warn("Job failed, leaving in queue for retry:", err);
+          // do not dequeue → keep it for next retry
         }
       }
-      // Optionally refetch fresh list here
     } finally {
       syncing = false;
     }

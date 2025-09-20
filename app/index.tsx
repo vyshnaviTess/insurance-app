@@ -14,7 +14,13 @@ export default function Home() {
   const router = useRouter();
   
    useEffect(() => {
-    fetchAndSync(); // fetch latest policies on mount
+    (async () => {
+      try {
+        await fetchAndSync(); // ✅ await to prevent unhandled rejection
+      } catch (err) {
+        console.warn("Policy sync failed (offline):", err);
+      }
+    })();
   }, []);
 
  const confirmDelete = (id: string) => {
@@ -29,8 +35,12 @@ export default function Home() {
         {
           text: "Yes",
           style: "destructive",
-          onPress: () => {
-            removePolicy(id);
+         onPress: async () => {
+            try {
+              await removePolicy(id); // ✅ await here too
+            } catch (err) {
+              console.warn("Delete policy failed (offline):", err);
+            }
           },
         },
       ],

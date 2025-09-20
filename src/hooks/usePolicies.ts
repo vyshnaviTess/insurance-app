@@ -16,23 +16,42 @@ export function usePolicies() {
   const policies = useSelector(policiesSelectors.selectAll);
 
   // Add policy 
-  const addPolicy = (policy: InsurancePolicy) =>
-    dispatch(createPolicy(policy));
+ const addPolicy = async (policy: InsurancePolicy) => {
+    try {
+      await dispatch(createPolicy(policy));
+    } catch (err) {
+      console.warn("Failed to add policy:", err);
+    }
+  };
 
   // Update policy
-  const editPolicy = (policy: InsurancePolicy) =>
-    dispatch(updatePolicy(policy));
+  const editPolicy = async (policy: InsurancePolicy) => {
+    try {
+      await dispatch(updatePolicy(policy));
+    } catch (err) {
+      console.warn("Failed to update policy:", err);
+    }
+  };
 
   // Delete policy
-  const removePolicy = (id: string) =>
+  const removePolicy = (id: string) => {
+    try { 
     dispatch(deletePolicy(id));
+    } catch (err) {
+      console.warn("Failed to delete policy:", err);
+    }
+  };
 
   // Sync policies with API
-  const fetchAndSync = () => {
+  const fetchAndSync = async () => {
     const client = new ApiClient({ baseUrl: API_BASE_URL });
     // const api = new PolicyApi(client);
     const repo = new RemotePolicyRepository(client);
-    dispatch(syncPolicies(repo));
+    try {
+    await dispatch(syncPolicies(repo));
+    } catch (err) {
+      console.warn("Policy sync failed:", err);
+    }
   };
 
   return {

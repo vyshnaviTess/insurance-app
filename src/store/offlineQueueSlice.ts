@@ -15,9 +15,14 @@ const slice = createSlice({
       state.push({ id: nanoid(), ...action.payload });
     },
     dequeue(state, action: PayloadAction<string>) {
-      return state.filter(j => j.id !== action.payload);
+      const index = state.findIndex((j) => j.id === action.payload);
+      if (index !== -1) {
+        state.splice(index, 1); // ✅ remove the job
+      }
     },
-    clear() { return []; },
+    clear(state) {
+      state.length = 0; // ✅ clear in place
+    },
   },
 });
 
